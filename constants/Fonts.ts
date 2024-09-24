@@ -1,7 +1,7 @@
 export const Fonts = {
-    RalewayRegular: 'Raleway-Regular',
-    RalewayBold: 'Raleway-Bold',
-    RalewayExtraBold: 'Raleway-ExtraBold',
-    RalewayItalic: 'Raleway-Italic',
-
+    RalewayRegular: 'Raleway_400Regular',
+    RalewayBold: 'Raleway_700Bold',
+    RalewayExtraBold: 'Raleway_800ExtraBold',
+    RalewayThin: 'Raleway_100Thin'
   };
+  

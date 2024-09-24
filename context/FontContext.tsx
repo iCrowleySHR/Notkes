@@ -1,10 +1,8 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import * as Font from 'expo-font';
-import { Fonts } from '../constants/Fonts';
+import React, { createContext, useContext, ReactNode } from 'react';
+import { useFonts, Raleway_400Regular, Raleway_700Bold, Raleway_800ExtraBold, Raleway_100Thin} from '@expo-google-fonts/raleway';
 
 interface FontContextType {
   fontsLoaded: boolean;
-  loadingError?: string;
 }
 
 const FontContext = createContext<FontContextType | undefined>(undefined);
@@ -14,36 +12,25 @@ interface FontProviderProps {
 }
 
 export const FontProvider: React.FC<FontProviderProps> = ({ children }) => {
-  const [fontsLoaded, setFontsLoaded] = useState<boolean>(false);
-  const [loadingError, setLoadingError] = useState<string | undefined>(undefined);
+  const [fontsLoaded] = useFonts({
+    Raleway_400Regular,
+    Raleway_700Bold,
+    Raleway_800ExtraBold,
+    Raleway_100Thin
+  });
 
-  const fetchFonts = async () => {
-    try {
-      await Font.loadAsync({
-        [Fonts.RalewayRegular]: require('@/assets/fonts/Raleway-Regular.ttf'),
-        [Fonts.RalewayBold]: require('@/assets/fonts/Raleway-Bold.ttf'),
-        [Fonts.RalewayExtraBold]: require('@/assets/fonts/Raleway-ExtraBold.ttf'),
-        [Fonts.RalewayItalic]: require('@/assets/fonts/Raleway-Italic.ttf'),
-      });
-      setFontsLoaded(true);
-    } catch (error) {
-      console.error('Error loading fonts', error);
-      setLoadingError('Failed to load fonts.');
-    }
-  };
-
-  useEffect(() => {
-    fetchFonts();
-  }, []);
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
-    <FontContext.Provider value={{ fontsLoaded, loadingError }}>
+    <FontContext.Provider value={{ fontsLoaded }}>
       {children}
     </FontContext.Provider>
   );
 };
 
-export const useFonts = (): FontContextType => {
+export const useFontsContext = (): FontContextType => {
   const context = useContext(FontContext);
   if (context === undefined) {
     throw new Error('useFonts must be used within a FontProvider');

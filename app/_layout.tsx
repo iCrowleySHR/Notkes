@@ -1,16 +1,16 @@
-import { FontProvider } from '../context/FontContext';
+import { FontProvider } from '../context/FontContext'; 
 import { Slot } from 'expo-router';
+import { Text } from 'react-native';
 
 function InitialLayout() {
-    return (
-        <FontProvider>
-            <Slot />
-        </FontProvider>
-    );
+
+    return <Slot />;
 }
 
 export default function Root() {
     return (
-        <InitialLayout />
+        <FontProvider>
+            <InitialLayout />
+        </FontProvider>
     );
 }
