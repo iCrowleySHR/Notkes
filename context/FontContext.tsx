@@ -1,3 +1,5 @@
+// content/FontContent.tsx
+
 import React, { createContext, useContext, ReactNode } from 'react';
 import { useFonts, Raleway_400Regular, Raleway_700Bold, Raleway_800ExtraBold, Raleway_100Thin} from '@expo-google-fonts/raleway';
 
