@@ -1,6 +1,5 @@
-import { InputSearch, SectionSearch, ScrollBody, Icon, SectionNotes, Notes } from '@/styles/index';
+import { InputSearch, SectionSearch, ScrollBody, Icon, SectionNotes, Notes, BorderLeft, Title, Content, ColumnText } from '@/styles/index';
 import { useState } from 'react';
-import { h, w } from '@/utils/responsiveMesures';
 const SearchImage = require('@/assets/images/search.png');
 
 export default function Index() {
@@ -8,6 +7,7 @@ export default function Index() {
 
   return (
     <ScrollBody>
+      
       <SectionSearch>
         <InputSearch
           value={searchText}
@@ -16,11 +16,17 @@ export default function Index() {
         />
         <Icon source={SearchImage} resizeMode="contain" />
       </SectionSearch>
-      {/* <SectionNotes>
+
+      <SectionNotes>
         <Notes>
-            dwadwa
+            <BorderLeft />
+            <ColumnText>
+              <Title>Título da nota!</Title>
+              <Content>Conteúdo da nota!</Content>
+            </ColumnText>
         </Notes>
-      </SectionNotes> */}
+      </SectionNotes>
+
     </ScrollBody>
   );
 }
