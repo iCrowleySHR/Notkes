@@ -1,9 +1,7 @@
-// constants/Fonts.ts
-
 export const Fonts = {
-    RalewayRegular: 'Raleway_400Regular',
-    RalewayBold: 'Raleway_700Bold',
-    RalewayExtraBold: 'Raleway_800ExtraBold',
-    RalewayThin: 'Raleway_100Thin'
+    PoppinsRegular: 'Poppins_400Regular',
+    PoppinsRegularBold: 'Poppins_700Bold',
+    PoppinsRegularExtraBold: 'Poppins_800ExtraBold',
+    PoppinsRegularThin: 'Poppins_100Thin'
   };
   

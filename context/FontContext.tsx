@@ -1,7 +1,5 @@
-// content/FontContent.tsx
-
 import React, { createContext, useContext, ReactNode } from 'react';
-import { useFonts, Raleway_400Regular, Raleway_700Bold, Raleway_800ExtraBold, Raleway_100Thin} from '@expo-google-fonts/raleway';
+import { useFonts, Poppins_800ExtraBold , Poppins_100Thin, Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
 
 interface FontContextType {
   fontsLoaded: boolean;
@@ -15,10 +13,10 @@ interface FontProviderProps {
 
 export const FontProvider: React.FC<FontProviderProps> = ({ children }) => {
   const [fontsLoaded] = useFonts({
-    Raleway_400Regular,
-    Raleway_700Bold,
-    Raleway_800ExtraBold,
-    Raleway_100Thin
+    Poppins_800ExtraBold,
+    Poppins_100Thin,
+    Poppins_400Regular,
+    Poppins_700Bold
   });
 
   if (!fontsLoaded) {
