@@ -11,10 +11,17 @@ export const ScrollBody = styled.ScrollView`
   padding: 0 ${w(5)}px;
 `;
 
+export const ScreenContainer = styled.View`
+  background-color: ${theme.background};
+  flex: 1;
+  padding: 0 ${w(5)}px;
+`;
+
 export const SectionSearch = styled.View`
   font-size: ${w(7)}px;
   text-align: center;
   margin-top: ${h(5)}px;
+  margin-bottom: ${h(2)}px;
   flex-direction: row;
   align-items: center; 
   width: 100%;
@@ -83,4 +90,18 @@ export const Content = styled.Text`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+`;
+
+export const ButtonAdd = styled.Pressable`
+  height: ${w(17)}px;
+  width: ${w(17)}px;
+  margin: ${h(3)}px auto ${w(20)}px;
+`;
+
+export const LabelAdd = styled.Text`
+  font-family: ${Fonts.PoppinsRegular};
+  font-size: ${w(3)}px;
+  color: ${theme.gray} ;
+  text-align: center;
+  margin-top: ${h(1)}px;
 `;
