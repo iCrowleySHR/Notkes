@@ -1,6 +1,6 @@
 export default {
   theme: {
-    background: '#e9f4fe',
+    background: '#e9eefe',
     black: '#212121',
     white: '#ffff',
     borderLeft: '#a6c7ee',

@@ -35,6 +35,7 @@ export const InputSearch = styled.TextInput`
   background-color: ${theme.white};
   outline: none;
   font-family: ${Fonts.PoppinsRegular};
+  color: ${theme.gray};
   width: 100%;
   height: ${w(9)}px; 
   font-size: ${w(3)}px;
@@ -58,13 +59,14 @@ export const Notes = styled.View`
   height: ${w(18)}px;
   margin: ${w(2)}px 0 ${w(2)}px 0;
   background-color: ${theme.white};
+  border: ${w(0.3)}px solid ${theme.borderLeft};
+  overflow: hidden;
 `;
 
 export const BorderLeft = styled.View`
   background-color: ${theme.borderLeft};
   height: 100%;
   width: ${w(5)}px;
-  border-radius: ${w(2)}px 0 0 ${w(2)}px;
   margin-right: ${w(3)}px;
 `;
 
@@ -77,6 +79,7 @@ export const ColumnText = styled.View`
 export const Title = styled.Text`
   font-size: ${w(4)}px;
   max-width: 95%;
+  color: ${theme.gray};
   white-space: nowrap;
   font-family: ${Fonts.PoppinsRegularBold};
   text-overflow: ellipsis;
