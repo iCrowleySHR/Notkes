@@ -75,7 +75,8 @@ export const ColumnText = styled.View`
 `;
 
 export const Title = styled.Text`
-  max-width: 100%;
+  font-size: ${w(4)}px;
+  max-width: 95%;
   white-space: nowrap;
   font-family: ${Fonts.PoppinsRegularBold};
   text-overflow: ellipsis;
@@ -86,7 +87,7 @@ export const Content = styled.Text`
   font-family: ${Fonts.PoppinsRegular};
   font-size: ${w(3)}px;
   color: ${theme.gray} ;
-  max-width: 100%;
+  max-width: 95%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
