@@ -2,13 +2,13 @@ import styled from 'styled-components/native';
 import { Fonts } from '@/constants/Fonts';
 import { h, w } from '@/utils/responsiveMesures';
 import Colors from '@/constants/Colors';
+import { Link } from 'expo-router';
 
 const { theme } = Colors;
 
 export const ScrollBody = styled.ScrollView`
   background-color: ${theme.background};
   flex: 1;
-  padding: 0 ${w(5)}px;
 `;
 
 export const ScreenContainer = styled.View`
@@ -33,7 +33,6 @@ export const InputSearch = styled.TextInput`
   border-radius: 13px;
   border-width: 0;
   background-color: ${theme.white};
-  outline: none;
   font-family: ${Fonts.PoppinsRegular};
   color: ${theme.gray};
   width: 100%;
@@ -96,7 +95,7 @@ export const Content = styled.Text`
   text-overflow: ellipsis;
 `;
 
-export const ButtonAdd = styled.Pressable`
+export const ButtonAdd = styled(Link)`
   height: ${w(17)}px;
   width: ${w(17)}px;
   margin: ${h(3)}px auto ${w(20)}px;

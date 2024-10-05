@@ -7,6 +7,7 @@ export type Note = {
 
 export type NotesType = { [key: string]: Note };
 
+
 export const createNote = async ({ title, content }: Note): Promise<void> => {
   await AsyncStorage.setItem(title, JSON.stringify({ title, content }));
 };
@@ -29,6 +30,29 @@ export const getAllNotes = async (): Promise<NotesType> => {
 
   return notes;
 };
+
+export const searchNotes = async (searchTerm: string): Promise<NotesType> => {
+  const keys = await AsyncStorage.getAllKeys();
+  const result = await AsyncStorage.multiGet(keys);
+
+  const filteredNotes = result.reduce<NotesType>((acc, [key, value]) => {
+    if (key && value) {
+      try {
+        const note: Note = JSON.parse(value);
+
+        if (note.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+          acc[key] = note;
+        }
+      } catch (error) {
+        console.error('Erro ao analisar a nota:', error);
+      }
+    }
+    return acc;
+  }, {} as NotesType);
+  
+  return filteredNotes;
+};
+
 
 // createNote({
 //   "title": "wdwadwadd",

@@ -1,7 +1,7 @@
 import { InputSearch, SectionSearch, ScrollBody, ScreenContainer, Icon, SectionNotes, Notes, BorderLeft, Title, Content, ColumnText, ButtonAdd, LabelAdd } from '@/styles/index';
 import { useState, useEffect } from 'react';
 import { Image } from 'react-native';
-import { createNote, getAllNotes, NotesType } from '@/services/note';
+import { searchNotes, getAllNotes, NotesType } from '@/services/note';
 
 const AddImage = require('@/assets/images/pencil.png');
 const SearchImage = require('@/assets/images/search.png');
@@ -10,23 +10,29 @@ export default function Index() {
   const [searchText, setSearchText] = useState('');
   const [notes, setNotes] = useState<NotesType>({});
 
+  const fetchSearch = async () => {
+    if (searchText.trim() === '') {
+      const allNotes = await getAllNotes();
+      setNotes(allNotes);
+    } else {
+      const filteredNotes = await searchNotes(searchText);
+      setNotes(filteredNotes);
+    }
+  };
+
+  const fetchNotes = async () => {
+    const fetchedNotes = await getAllNotes();
+    setNotes(fetchedNotes);
+  };
+
   useEffect(() => {
-    const fetchNotes = async () => {
-      try {
-        const fetchedNotes = await getAllNotes();
-        setNotes(fetchedNotes);
-      } catch (error) {
-        console.error('Erro ao buscar notas:', error);
-      }
-    };
-
-//     createNote({
-//   "title": "wdwadwadd",
-//   "content": "wdwadawdadawd"
-// })
-
     fetchNotes();
   }, []);
+
+  useEffect(() => {
+    fetchSearch();
+  }, [searchText]);
+
 
   return (
     <ScreenContainer>
@@ -56,7 +62,7 @@ export default function Index() {
           )}
         </SectionNotes>
       </ScrollBody>
-      <ButtonAdd>
+      <ButtonAdd href="/note">
         <Image
           source={AddImage}
           style={{ width: '100%', height: '100%' }}
