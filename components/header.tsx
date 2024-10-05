@@ -4,10 +4,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { HeaderContainer, BackButton } from '@/styles/header'
 import { w } from '@/utils/responsiveMesures';
 
-
 export default function Header() {
     const navigation = useNavigation();
-    
+
     return (
         <HeaderContainer>
             <BackButton onPress={() => navigation.goBack()}>
