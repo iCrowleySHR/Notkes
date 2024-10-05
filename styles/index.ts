@@ -2,7 +2,6 @@ import styled from 'styled-components/native';
 import { Fonts } from '@/constants/Fonts';
 import { h, w } from '@/utils/responsiveMesures';
 import Colors from '@/constants/Colors';
-import { Link } from 'expo-router';
 
 const { theme } = Colors;
 
@@ -95,7 +94,7 @@ export const Content = styled.Text`
   text-overflow: ellipsis;
 `;
 
-export const ButtonAdd = styled(Link)`
+export const ButtonAdd = styled.Pressable`
   height: ${w(17)}px;
   width: ${w(17)}px;
   margin: ${h(3)}px auto ${w(20)}px;

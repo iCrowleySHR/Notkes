@@ -2,11 +2,13 @@ import { InputSearch, SectionSearch, ScrollBody, ScreenContainer, Icon, SectionN
 import { useState, useEffect } from 'react';
 import { Image } from 'react-native';
 import { searchNotes, getAllNotes, NotesType } from '@/services/note';
+import { useRouter } from 'expo-router';
 
 const AddImage = require('@/assets/images/pencil.png');
 const SearchImage = require('@/assets/images/search.png');
 
 export default function Index() {
+  const router = useRouter(); 
   const [searchText, setSearchText] = useState('');
   const [notes, setNotes] = useState<NotesType>({});
 
@@ -62,7 +64,7 @@ export default function Index() {
           )}
         </SectionNotes>
       </ScrollBody>
-      <ButtonAdd href="/note">
+      <ButtonAdd onPress={() => router.push('/note')}>
         <Image
           source={AddImage}
           style={{ width: '100%', height: '100%' }}
