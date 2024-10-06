@@ -1,14 +1,14 @@
 import { InputSearch, SectionSearch, ScrollBody, ScreenContainer, Icon, SectionNotes, Notes, BorderLeft, Title, Content, ColumnText, ButtonAdd, LabelAdd } from '@/styles/index';
 import { useState, useEffect } from 'react';
 import { Image } from 'react-native';
-import { searchNotes, getAllNotes, NotesType } from '@/services/note';
-import { useRouter } from 'expo-router';
+import { searchNotes, getAllNotes, NotesType, createNote } from '@/services/note';
+import { Link, useRouter } from 'expo-router';
 
 const AddImage = require('@/assets/images/pencil.png');
 const SearchImage = require('@/assets/images/search.png');
 
 export default function Index() {
-  const router = useRouter(); 
+  const router = useRouter();
   const [searchText, setSearchText] = useState('');
   const [notes, setNotes] = useState<NotesType>({});
 
@@ -50,14 +50,16 @@ export default function Index() {
       <ScrollBody>
         <SectionNotes>
           {Object.keys(notes).length > 0 ? (
-            Object.entries(notes).map(([title, note]) => (
-              <Notes key={title}>
-                <BorderLeft />
-                <ColumnText>
-                  <Title>{title}</Title>
-                  <Content>{note.content}</Content>
-                </ColumnText>
-              </Notes>
+            Object.entries(notes).map(([id, note]) => (
+              <Link key={id} href={`/note?id=${id}`}>
+                <Notes>
+                  <BorderLeft />
+                  <ColumnText>
+                    <Title>{note.title}</Title>
+                    <Content>{note.content}</Content>
+                  </ColumnText>
+                </Notes>
+              </Link>
             ))
           ) : (
             <Content>Sem notas disponíveis</Content>

@@ -2,7 +2,6 @@ import styled from 'styled-components/native';
 import Colors from '@/constants/Colors';
 import { TouchableOpacity } from 'react-native';
 import { w, h } from '@/utils/responsiveMesures';
-import { StatusBar } from 'react-native';
 
 const { theme } = Colors;
 
