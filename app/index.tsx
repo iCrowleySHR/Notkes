@@ -23,6 +23,10 @@ export default function Index() {
   };
 
   const fetchNotes = async () => {
+    createNote({
+      'title': 'Oiiii',
+      'content': 'Tudo bem?'
+    });
     const fetchedNotes = await getAllNotes();
     setNotes(fetchedNotes);
   };

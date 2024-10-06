@@ -84,6 +84,6 @@ export const deleteNote = async (id: string): Promise<void> => {
 /*
   Função para deletar todos os dados do AsyncStorage.
 */
-export const deleteAllNotes = async (): Promise<void> => {
+export const deleteAll = async (): Promise<void> => {
   await AsyncStorage.clear();
 };
