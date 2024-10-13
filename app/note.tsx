@@ -52,14 +52,6 @@ export default function Note() {
     return <ActivityIndicator size="large" color="#0000ff" />;
   }
 
-  if (error) {
-    return (
-      <View>
-        <Text>{error}</Text>
-      </View>
-    );
-  }
-
   const handleTitleChange = (text: string) => {
     setNote((prev) => ({ ...prev, title: text }));
   };
