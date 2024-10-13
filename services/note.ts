@@ -14,7 +14,7 @@ export type NotesType = {
 /*
   Função para criar notas no AsyncStorage.
 */
-export const createNote = async ({ title, content }: Omit<Note, 'id'>): Promise<void> => {
+export const createNote = async ({title, content }: Omit<Note, 'id'>): Promise<void> => {
   const id = uuidv4();
   await AsyncStorage.setItem(id, JSON.stringify({ id, title, content }));
 };

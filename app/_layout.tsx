@@ -20,6 +20,7 @@ function InitialLayout() {
             />
             <Stack.Screen
                 name="note"
+                options={{ headerShown: false }}
             />
         </Stack>
     );

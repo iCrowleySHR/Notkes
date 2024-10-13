@@ -1,5 +1,6 @@
-import { InputSearch, SectionSearch, ScrollBody, ScreenContainer, Icon, SectionNotes, Notes, BorderLeft, Title, Content, ColumnText, ButtonAdd, LabelAdd } from '@/styles/index';
-import { useState, useEffect } from 'react';
+import { InputSearch, SectionSearch, ScrollBody, ScreenContainer, Icon, SectionNotes, Notes, 
+         BorderLeft, Title, Content, ColumnText, ButtonAdd, LabelAdd } from '@/styles/index';
+import React, { useState, useEffect } from 'react';
 import { Image } from 'react-native';
 import { searchNotes, getAllNotes, NotesType, createNote } from '@/services/note';
 import { Link, useRouter } from 'expo-router';
