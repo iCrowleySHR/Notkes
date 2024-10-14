@@ -71,6 +71,7 @@ export const ColumnText = styled.View`
   flex-direction: column;
   width: 90%;
   justify-content: center;
+  position: relative;
 `;
 
 export const Title = styled.Text`
@@ -91,6 +92,15 @@ export const Content = styled.Text`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+`;
+
+export const DateText = styled.Text`
+  font-family: ${Fonts.PoppinsRegular};
+  font-size: ${w(2.5)}px;
+  position: absolute;
+  bottom: 2px; 
+  right: 2px;
+  color: ${theme.gray} ;
 `;
 
 export const ButtonAdd = styled.Pressable`

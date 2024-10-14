@@ -1,8 +1,9 @@
-import { InputSearch, SectionSearch, ScrollBody, ScreenContainer, Icon, SectionNotes, Notes, BorderLeft, Title, Content, ColumnText, ButtonAdd, LabelAdd } from '@/styles/index';
+import { InputSearch, SectionSearch, ScrollBody, ScreenContainer, Icon, SectionNotes, Notes, BorderLeft, Title, Content, ColumnText, ButtonAdd, LabelAdd, DateText } from '@/styles/index';
 import React, { useState, useEffect } from 'react';
 import { Image } from 'react-native';
-import { searchNotes, getAllNotes, NotesType } from '@/services/note';
+import { searchNotes, getAllNotes, NotesType, deleteAll } from '@/services/note';
 import { Link, useRouter } from 'expo-router';
+import { formatDate } from '@/utils/dateFormatter';
 
 const AddImage = require('@/assets/images/pencil.png');
 const SearchImage = require('@/assets/images/search.png');
@@ -57,6 +58,7 @@ export default function Index() {
                   <ColumnText>
                     <Title>{note.title}</Title>
                     <Content>{note.content}</Content>
+                    <DateText>{formatDate(note.lastUpdate)}</DateText>
                   </ColumnText>
                 </Notes>
               </Link>

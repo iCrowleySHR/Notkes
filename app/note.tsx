@@ -6,6 +6,7 @@ import { ScreenContainer } from '@/styles';
 import { createNote, updateNote } from '@/services/note';
 import Toast from 'react-native-toast-message';
 import Header from '@/components/header';
+import { Text } from 'react-native';
 
 export default function Note() {
   const { id } = useLocalSearchParams();

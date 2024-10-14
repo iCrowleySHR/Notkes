@@ -5,6 +5,7 @@ export type Note = {
   id: string;
   title: string;
   content: string;
+  lastUpdate: string; 
 };
 
 export type NotesType = { 
@@ -14,9 +15,10 @@ export type NotesType = {
 /*
   Função para criar notas no AsyncStorage.
 */
-export const createNote = async ({title, content }: Omit<Note, 'id'>): Promise<void> => {
+export const createNote = async ({ title, content }: Omit<Note, 'id' | 'lastUpdate'>): Promise<void> => {
   const id = uuidv4();
-  await AsyncStorage.setItem(id, JSON.stringify({ id, title, content }));
+  const lastUpdate = new Date().toISOString(); // Definindo a data e hora atual
+  await AsyncStorage.setItem(id, JSON.stringify({ id, title, content, lastUpdate }));
 };
 
 /*
@@ -26,22 +28,29 @@ export const getAllNotes = async (): Promise<NotesType> => {
   const keys = await AsyncStorage.getAllKeys();
   const result = await AsyncStorage.multiGet(keys);
 
-  const notes = result.reduce<NotesType>((acc, [key, value]) => {
+  const notesArray: Note[] = result.reduce<Note[]>((acc, [key, value]) => {
     if (key && value) {
       try {
         const note: Note = JSON.parse(value);
-        acc[key] = note;
+        acc.push(note); 
       } catch (error) {
         console.error('Erro ao analisar a nota:', error);
       }
     }
     return acc;
-  }, {} as NotesType);
+  }, []);
+
+  const sortedNotes = notesArray.sort((a, b) => {
+    return new Date(b.lastUpdate).getTime() - new Date(a.lastUpdate).getTime();
+  });
+
+  const notes: NotesType = sortedNotes.reduce<NotesType>((acc, note) => {
+    acc[note.id] = note;
+    return acc;
+  }, {});
 
   return notes;
 };
-
-
 /*
   Função que retorna notas pelo o título.
 */
@@ -70,8 +79,9 @@ export const searchNotes = async (searchTerm: string): Promise<NotesType> => {
 /*
   Função para atualizar nota recebendo o ID.
 */
-export const updateNote = async (id: string, { title, content }: Omit<Note, 'id'>): Promise<void> => {
-  await AsyncStorage.setItem(id, JSON.stringify({ id, title, content }));
+export const updateNote = async (id: string, { title, content }: Omit<Note, 'id' | 'lastUpdate'>): Promise<void> => {
+  const lastUpdate = new Date().toISOString(); // Atualizando a data e hora
+  await AsyncStorage.setItem(id, JSON.stringify({ id, title, content, lastUpdate }));
 };
 
 /*
