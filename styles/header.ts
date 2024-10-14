@@ -10,7 +10,7 @@ const { theme } = Colors;
 
 
 export const HeaderContainer = styled.View`
-    height: ${h(10)}px;
+    height: ${h(7.5)}px;
     background-color: ${theme.borderLeft};
     flex-direction: row;
     align-items: center;
@@ -19,7 +19,7 @@ export const HeaderContainer = styled.View`
     margin-top: ${statusBar}px;
 `;
 export const BackButton = styled(TouchableOpacity)`
- margin-right: ${w(6)}px;
+   margin-right: ${w(6)}px;
 `;
 
 export const SectionButtons = styled.View`

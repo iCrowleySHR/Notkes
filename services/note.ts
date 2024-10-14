@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 
 export type Note = {
@@ -17,7 +18,7 @@ export type NotesType = {
 */
 export const createNote = async ({ title, content }: Omit<Note, 'id' | 'lastUpdate'>): Promise<void> => {
   const id = uuidv4();
-  const lastUpdate = new Date().toISOString(); // Definindo a data e hora atual
+  const lastUpdate = new Date().toISOString(); 
   await AsyncStorage.setItem(id, JSON.stringify({ id, title, content, lastUpdate }));
 };
 
@@ -80,7 +81,7 @@ export const searchNotes = async (searchTerm: string): Promise<NotesType> => {
   Função para atualizar nota recebendo o ID.
 */
 export const updateNote = async (id: string, { title, content }: Omit<Note, 'id' | 'lastUpdate'>): Promise<void> => {
-  const lastUpdate = new Date().toISOString(); // Atualizando a data e hora
+  const lastUpdate = new Date().toISOString();
   await AsyncStorage.setItem(id, JSON.stringify({ id, title, content, lastUpdate }));
 };
 

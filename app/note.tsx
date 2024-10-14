@@ -5,12 +5,15 @@ import { InputContent, InputTitle, ScrollBody } from '@/styles/note';
 import { createNote, updateNote, deleteNote } from '@/services/note';
 import Header from '@/components/header';
 import { debounce } from 'lodash'; 
+import Colors from '@/constants/Colors';
+import { StatusBar } from 'react-native';
 
 export default function Note() {
   const { id } = useLocalSearchParams();
   const noteId = Array.isArray(id) ? id[0] : id;
   const [note, setNote] = useState({ title: '', content: '' });
   const [inputHeight, setInputHeight] = useState(0);
+  const { theme } = Colors;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,6 +62,7 @@ export default function Note() {
   };
   return (
     <ScrollBody>
+      <StatusBar backgroundColor={theme.borderLeft} barStyle="light-content" />
       <Header  onDelete={deleteNotes} />
 
       <InputTitle

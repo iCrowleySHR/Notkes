@@ -1,6 +1,6 @@
 import { InputSearch, SectionSearch, ScrollBody, ScreenContainer, Icon, SectionNotes, Notes, BorderLeft, Title, Content, ColumnText, ButtonAdd, LabelAdd, DateText } from '@/styles/index';
 import React, { useState, useEffect } from 'react';
-import { Image } from 'react-native';
+import { Image, Pressable, View } from 'react-native';
 import { searchNotes, getAllNotes, NotesType, deleteAll } from '@/services/note';
 import { Link, useRouter } from 'expo-router';
 import { formatDate } from '@/utils/dateFormatter';
@@ -52,7 +52,7 @@ export default function Index() {
         <SectionNotes>
           {Object.keys(notes).length > 0 ? (
             Object.entries(notes).map(([id, note]) => (
-              <Link key={id} href={`/note?id=${id}`}>
+              <Pressable onPress={() => router.push({ pathname: "/note", params: { id: `${id}` } })} key={id} >
                 <Notes>
                   <BorderLeft />
                   <ColumnText>
@@ -61,7 +61,7 @@ export default function Index() {
                     <DateText>{formatDate(note.lastUpdate)}</DateText>
                   </ColumnText>
                 </Notes>
-              </Link>
+              </Pressable>
             ))
           ) : (
             <Content>Sem notas disponíveis</Content>
