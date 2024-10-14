@@ -22,15 +22,20 @@ export const BackButton = styled(TouchableOpacity)`
  margin-right: ${w(6)}px;
 `;
 
-export const ButtonSave = styled.Pressable`
-  height: ${w(10)}px;
-  width: ${w(10)}px;
-  align-items: center;
-  justify-content: center;
-  margin-top: ${h(0.5)}px;
+export const SectionButtons = styled.View`
+  flex-direction: row;
+  position: absolute;
+  right: 5px;
 `;
 
-export const LabelSave = styled.Text`
+export const Button = styled.Pressable`
+  height: ${w(7)}px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 ${w(2)}px 0 ${w(2)}px;
+`;
+
+export const Label = styled.Text`
   font-family: ${Fonts.PoppinsRegular};
   font-size: ${w(3)}px;
   color: #fff;

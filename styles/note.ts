@@ -31,6 +31,7 @@ export const InputContent = styled.TextInput`
   font-size: ${w(4)}px;
   width: 100%;
   min-height: ${h(83)}px;
-  text-align-vertical: top; 
+  vertical-align: top; 
   padding: ${w(2)}px; 
+  border-width: 0;
 `;
