@@ -1,28 +1,11 @@
 import React from 'react';
 import { FontProvider } from '../context/FontContext';
-import { Stack } from 'expo-router';
-import Header from '@/components/header'
+import { Slot } from 'expo-router';
 
 
 function InitialLayout() {
     return (
-        <Stack
-            screenOptions={{
-                header: () => <Header />,
-                headerTitleStyle: {
-                    fontWeight: 'bold',
-                },
-            }}
-        >
-            <Stack.Screen
-                name="index"
-                options={{ headerShown: false }}
-            />
-            <Stack.Screen
-                name="note"
-                options={{ headerShown: false }}
-            />
-        </Stack>
+        <Slot />
     );
 }
 

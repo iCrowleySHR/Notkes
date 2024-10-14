@@ -7,15 +7,11 @@ const { theme } = Colors;
 
 export const ScrollBody = styled.ScrollView`
   background-color: #fff;
-  flex: 1;
 `;
 
 export const ScreenContainer = styled.View`
   background-color: #fff;
-  flex: 1;
-
 `;
-
 
 export const InputTitle = styled.TextInput`
   padding: ${w(2)}px;
@@ -34,8 +30,8 @@ export const InputContent = styled.TextInput`
   font-family: ${Fonts.PoppinsRegular};
   color: ${theme.gray};
   font-size: ${w(4)}px;
-  min-height: ${h(90)}px;  
   width: 100%;
+  min-height: ${h(83)}px;
   text-align-vertical: top; 
   padding: ${w(2)}px; 
 `;

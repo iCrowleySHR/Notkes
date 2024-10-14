@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { InputContent, InputTitle, ScrollBody } from '@/styles/note';
 import { ScreenContainer } from '@/styles';
-import { createNote } from '@/services/note';
+import { createNote, updateNote } from '@/services/note';
 import Toast from 'react-native-toast-message';
 import Header from '@/components/header';
 
@@ -12,25 +11,16 @@ export default function Note() {
   const { id } = useLocalSearchParams();
   const noteId = Array.isArray(id) ? id[0] : id;
   const [note, setNote] = useState({ title: '', content: '' });
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       if (noteId) {
-        try {
           const value = await AsyncStorage.getItem(noteId);
           if (value !== null) {
             setNote(JSON.parse(value));
           }
-        } catch (e) {
-          setError('nota não encontrada');
-        } finally {
-          setLoading(false);
-        }
       } else {
-        setLoading(false); 
-        setNote({ title: '', content: '' }); 
+        setNote({ title: '', content: '' });
       }
     };
 
@@ -38,19 +28,17 @@ export default function Note() {
   }, [noteId]);
 
   const saveNotes = async () => {
-    createNote(note);
-    Toast.show({
-      text1: 'Nota salva!'
-    })
+    if (noteId) {
+      updateNote(noteId, note);
+    }else{
+      createNote(note);
+      Toast.show({
+        text1: 'Nota salva!',
+      });
+    }
+    
+    router.push('/');
   };
-
-  useEffect(() => {
-    saveNotes();
-  }, []);
-
-  if (loading) {
-    return <ActivityIndicator size="large" color="#0000ff" />;
-  }
 
   const handleTitleChange = (text: string) => {
     setNote((prev) => ({ ...prev, title: text }));
@@ -61,8 +49,8 @@ export default function Note() {
   };
 
   return (
-    <ScrollBody>  
-      <Header onSave={saveNotes} /> <Toast />
+    <ScrollBody>
+      <Header onSave={saveNotes} />
       <ScreenContainer>
         <InputTitle
           value={note.title}
@@ -73,10 +61,11 @@ export default function Note() {
           value={note.content}
           onChangeText={handleContentChange}
           placeholder="Digite aqui o conteúdo..."
+          scrollEnabled={false}
           multiline
         />
-      
       </ScreenContainer>
+      <Toast /> 
     </ScrollBody>
   );
 }

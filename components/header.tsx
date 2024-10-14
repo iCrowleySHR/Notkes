@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigation } from 'expo-router';
+import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { HeaderContainer, BackButton, ButtonSave, LabelSave, ImageSave } from '@/styles/header';
 import { w } from '@/utils/responsiveMesures';
@@ -12,11 +12,10 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ onSave }) => {
-    const navigation = useNavigation();
 
     return (
         <HeaderContainer>
-            <BackButton onPress={() => navigation.goBack()}>
+            <BackButton onPress={() => router.push('/')}>
                 <Ionicons name="arrow-back" size={w(7)} color="#fff" />
             </BackButton>
             <ButtonSave onPress={onSave}>

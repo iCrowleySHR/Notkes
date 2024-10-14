@@ -20,7 +20,6 @@ export const SectionSearch = styled.View`
   font-size: ${w(7)}px;
   text-align: center;
   margin-top: ${h(5)}px;
-  margin-bottom: ${h(2)}px;
   flex-direction: row;
   align-items: center; 
   width: 100%;
@@ -97,7 +96,7 @@ export const Content = styled.Text`
 export const ButtonAdd = styled.Pressable`
   height: ${w(17)}px;
   width: ${w(17)}px;
-  margin: ${h(3)}px auto ${w(20)}px;
+  margin: ${h(3)}px auto ${w(15)}px;
 `;
 
 export const LabelAdd = styled.Text`

@@ -1,8 +1,7 @@
-import { InputSearch, SectionSearch, ScrollBody, ScreenContainer, Icon, SectionNotes, Notes, 
-         BorderLeft, Title, Content, ColumnText, ButtonAdd, LabelAdd } from '@/styles/index';
+import { InputSearch, SectionSearch, ScrollBody, ScreenContainer, Icon, SectionNotes, Notes, BorderLeft, Title, Content, ColumnText, ButtonAdd, LabelAdd } from '@/styles/index';
 import React, { useState, useEffect } from 'react';
 import { Image } from 'react-native';
-import { searchNotes, getAllNotes, NotesType, createNote } from '@/services/note';
+import { searchNotes, getAllNotes, NotesType } from '@/services/note';
 import { Link, useRouter } from 'expo-router';
 
 const AddImage = require('@/assets/images/pencil.png');
@@ -24,10 +23,6 @@ export default function Index() {
   };
 
   const fetchNotes = async () => {
-    createNote({
-      'title': 'Oiiii',
-      'content': 'Tudo bem?'
-    });
     const fetchedNotes = await getAllNotes();
     setNotes(fetchedNotes);
   };
