@@ -12,6 +12,7 @@ export default function Note() {
   const { id } = useLocalSearchParams();
   const noteId = Array.isArray(id) ? id[0] : id;
   const [note, setNote] = useState({ title: '', content: '' });
+  const [inputHeight, setInputHeight] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,7 +53,7 @@ export default function Note() {
   return (
     <ScrollBody>
       <Header onSave={saveNotes} />
-      <ScreenContainer>
+    
         <InputTitle
           value={note.title}
           onChangeText={handleTitleChange}
@@ -63,9 +64,11 @@ export default function Note() {
           onChangeText={handleContentChange}
           placeholder="Digite aqui o conteúdo..."
           scrollEnabled={false}
+          style={{ height: Math.max(35, inputHeight) }}
+          onContentSizeChange={(e) => setInputHeight(e.nativeEvent.contentSize.height)}
           multiline
         />
-      </ScreenContainer>
+  
       <Toast /> 
     </ScrollBody>
   );

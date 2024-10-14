@@ -16,7 +16,6 @@ export const ScreenContainer = styled.View`
 export const InputTitle = styled.TextInput`
   padding: ${w(2)}px;
   font-family: ${Fonts.PoppinsRegularBold};
-  border-style: none;
   color: ${theme.gray};
   width: 100%;
   height: ${w(9)}px; 
