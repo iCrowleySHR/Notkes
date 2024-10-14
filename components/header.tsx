@@ -8,11 +8,10 @@ import { w } from '@/utils/responsiveMesures';
 const SaveImage = require('@/assets/images/salvar.png');
 
 interface HeaderProps {
-    onSave?: () => void;
     onDelete?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onSave, onDelete }) => {
+const Header: React.FC<HeaderProps> = ({  onDelete }) => {
 
     return (
         <HeaderContainer>
