@@ -18,7 +18,7 @@ export const InputTitle = styled.TextInput`
   font-family: ${Fonts.PoppinsRegularBold};
   color: ${theme.gray};
   width: 100%;
-  height: ${w(9)}px; 
+  height: ${h(9)}px; 
   font-size: ${w(6)}px;
   margin-top: ${w(6)}px;
 `;
