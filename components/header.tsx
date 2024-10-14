@@ -1,33 +1,30 @@
 import React from 'react';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { HeaderContainer, BackButton, ButtonSave, LabelSave, ImageSave } from '@/styles/header';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { HeaderContainer, BackButton, Button, Label, ImageSave, SectionButtons } from '@/styles/header';
 import { w } from '@/utils/responsiveMesures';
-import { Image } from 'react-native';
 
 const SaveImage = require('@/assets/images/salvar.png');
 
 interface HeaderProps {
     onSave?: () => void;
+    onDelete?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ onSave }) => {
+const Header: React.FC<HeaderProps> = ({ onSave, onDelete }) => {
 
     return (
         <HeaderContainer>
             <BackButton onPress={() => router.push('/')}>
                 <Ionicons name="arrow-back" size={w(7)} color="#fff" />
             </BackButton>
-            <ButtonSave onPress={onSave}>
-                <ImageSave>
-                    <Image
-                        source={SaveImage}
-                        style={{ width: '100%', height: '100%' }}
-                        resizeMode="contain"
-                    />
-                </ImageSave>
-                <LabelSave>Salvar</LabelSave>
-            </ButtonSave>
+            <SectionButtons>
+                <Button onPress={onDelete}>
+                    <MaterialIcons name="delete" size={w(7)} color="#ad3838" />
+                    <Label>Deletar</Label>
+                </Button>
+            </SectionButtons>
         </HeaderContainer>
     );
 };

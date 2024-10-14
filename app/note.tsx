@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback  } from 'react';
 import { router, useLocalSearchParams } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { InputContent, InputTitle, ScrollBody } from '@/styles/note';
-import { ScreenContainer } from '@/styles';
-import { createNote, updateNote } from '@/services/note';
-import Toast from 'react-native-toast-message';
+import { createNote, updateNote, deleteNote } from '@/services/note';
 import Header from '@/components/header';
-import { Text } from 'react-native';
+import { debounce } from 'lodash'; 
 
 export default function Note() {
   const { id } = useLocalSearchParams();
@@ -17,10 +15,10 @@ export default function Note() {
   useEffect(() => {
     const fetchData = async () => {
       if (noteId) {
-          const value = await AsyncStorage.getItem(noteId);
-          if (value !== null) {
-            setNote(JSON.parse(value));
-          }
+        const value = await AsyncStorage.getItem(noteId);
+        if (value !== null) {
+          setNote(JSON.parse(value));
+        }
       } else {
         setNote({ title: '', content: '' });
       }
@@ -29,47 +27,55 @@ export default function Note() {
     fetchData();
   }, [noteId]);
 
-  const saveNotes = async () => {
-    if (noteId) {
-      updateNote(noteId, note);
-    }else{
-      createNote(note);
-      Toast.show({
-        text1: 'Nota salva!',
-      });
-    }
-    
+
+
+  const deleteNotes = async () => {
+    deleteNote(noteId);
     router.push('/');
+  }
+  const saveNotes = async (newNote: any) => {
+    if (noteId) {
+      updateNote(noteId, newNote);
+    } else {
+      createNote(newNote);
+    }
   };
 
+  const debouncedSaveNotes = useCallback(
+    debounce((newNote) => saveNotes(newNote), 1000),
+    [noteId]
+  );
+
   const handleTitleChange = (text: string) => {
-    setNote((prev) => ({ ...prev, title: text }));
+    const updatedNote = { ...note, title: text };
+    setNote(updatedNote);
+    debouncedSaveNotes(updatedNote);
   };
 
   const handleContentChange = (text: string) => {
-    setNote((prev) => ({ ...prev, content: text }));
+    const updatedNote = { ...note, content: text };
+    setNote(updatedNote);
+    debouncedSaveNotes(updatedNote);
   };
-
   return (
     <ScrollBody>
-      <Header onSave={saveNotes} />
-    
-        <InputTitle
-          value={note.title}
-          onChangeText={handleTitleChange}
-          placeholder="Insira o título da nota..."
-        />
-        <InputContent
-          value={note.content}
-          onChangeText={handleContentChange}
-          placeholder="Digite aqui o conteúdo..."
-          scrollEnabled={false}
-          style={{ height: Math.max(35, inputHeight) }}
-          onContentSizeChange={(e) => setInputHeight(e.nativeEvent.contentSize.height)}
-          multiline
-        />
-  
-      <Toast /> 
+      <Header  onDelete={deleteNotes} />
+
+      <InputTitle
+        value={note.title}
+        onChangeText={handleTitleChange}
+        placeholder="Insira o título da nota..."
+      />
+      <InputContent
+        value={note.content}
+        onChangeText={handleContentChange}
+        placeholder="Digite aqui o conteúdo..."
+        scrollEnabled={false}
+        style={{ height: Math.max(35, inputHeight) }}
+        onContentSizeChange={(e) => setInputHeight(e.nativeEvent.contentSize.height)}
+        multiline
+      />
+
     </ScrollBody>
   );
 }
