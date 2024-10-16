@@ -2,7 +2,7 @@ import { InputSearch, SectionSearch, ScrollBody, ScreenContainer, Icon, SectionN
 import React, { useState, useEffect } from 'react';
 import { Image, Pressable, View } from 'react-native';
 import { searchNotes, getAllNotes, NotesType, deleteAll } from '@/services/note';
-import { Link, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { formatDate } from '@/utils/dateFormatter';
 
 const AddImage = require('@/assets/images/pencil.png');
