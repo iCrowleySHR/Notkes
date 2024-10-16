@@ -1,16 +1,17 @@
-import React, { useEffect, useState, useCallback  } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { router, useLocalSearchParams } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { InputContent, InputTitle, ScrollBody } from '@/styles/note';
 import { createNote, updateNote, deleteNote } from '@/services/note';
 import Header from '@/components/header';
-import { debounce } from 'lodash'; 
+import { debounce } from 'lodash';
 import Colors from '@/constants/Colors';
 import { StatusBar } from 'react-native';
 
 export default function Note() {
   const { id } = useLocalSearchParams();
-  const noteId = Array.isArray(id) ? id[0] : id;
+  const initialNoteId = Array.isArray(id) ? id[0] : id;
+  const [noteId, setNoteId] = useState(initialNoteId);
   const [note, setNote] = useState({ title: '', content: '' });
   const [inputHeight, setInputHeight] = useState(0);
   const { theme } = Colors;
@@ -31,14 +32,16 @@ export default function Note() {
   }, [noteId]);
 
   const deleteNotes = async () => {
-    deleteNote(noteId);
+    await deleteNote(noteId);
     router.push('/');
-  }
+  };
+
   const saveNotes = async (newNote: any) => {
     if (noteId) {
-      updateNote(noteId, newNote);
+      await updateNote(noteId, newNote);
     } else {
-      createNote(newNote);
+      const id = await createNote(newNote);
+      setNoteId(id); 
     }
   };
 
@@ -58,6 +61,7 @@ export default function Note() {
     setNote(updatedNote);
     debouncedSaveNotes(updatedNote);
   };
+
   return (
     <ScrollBody>
       <StatusBar backgroundColor={theme.borderLeft} barStyle="light-content" />
@@ -77,7 +81,6 @@ export default function Note() {
         onContentSizeChange={(e) => setInputHeight(e.nativeEvent.contentSize.height)}
         multiline
       />
-
     </ScrollBody>
   );
 }
