@@ -30,8 +30,6 @@ export default function Note() {
     fetchData();
   }, [noteId]);
 
-
-
   const deleteNotes = async () => {
     deleteNote(noteId);
     router.push('/');
@@ -63,7 +61,7 @@ export default function Note() {
   return (
     <ScrollBody>
       <StatusBar backgroundColor={theme.borderLeft} barStyle="light-content" />
-      <Header  onDelete={deleteNotes} />
+      <Header onDelete={deleteNotes} noteId={noteId} />
 
       <InputTitle
         value={note.title}

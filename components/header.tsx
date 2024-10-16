@@ -9,9 +9,10 @@ const SaveImage = require('@/assets/images/salvar.png');
 
 interface HeaderProps {
     onDelete?: () => void;
+    noteId?: string;
 }
 
-const Header: React.FC<HeaderProps> = ({  onDelete }) => {
+const Header: React.FC<HeaderProps> = ({ onDelete, noteId }) => {
 
     return (
         <HeaderContainer>
@@ -19,10 +20,12 @@ const Header: React.FC<HeaderProps> = ({  onDelete }) => {
                 <Ionicons name="arrow-back" size={w(7)} color="#fff" />
             </BackButton>
             <SectionButtons>
-                <Button onPress={onDelete}>
-                    <MaterialIcons name="delete" size={w(7)} color="#ad3838" />
-                    <Label>Deletar</Label>
-                </Button>
+                {noteId && (
+                    <Button onPress={onDelete}>
+                        <MaterialIcons name="delete" size={w(7)} color="#ad3838" />
+                        <Label>Deletar</Label>
+                    </Button>
+                )}
             </SectionButtons>
         </HeaderContainer>
     );
