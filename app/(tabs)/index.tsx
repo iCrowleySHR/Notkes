@@ -4,6 +4,7 @@ import { Image, Pressable, View } from 'react-native';
 import { searchNotes, getAllNotes, NotesType, deleteAll } from '@/services/note';
 import { useRouter } from 'expo-router';
 import { formatDate } from '@/utils/dateFormatter';
+import { useFocusEffect } from 'expo-router';
 
 const AddImage = require('@/assets/images/pencil.png');
 const SearchImage = require('@/assets/images/search.png');
@@ -23,14 +24,17 @@ export default function Index() {
     }
   };
 
-  const fetchNotes = async () => {
-    const fetchedNotes = await getAllNotes();
-    setNotes(fetchedNotes);
-  };
 
-  useEffect(() => {
-    fetchNotes();
-  }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      const fetchNotes = async () => {
+        const fetchedNotes = await getAllNotes();
+        setNotes(fetchedNotes);
+      };
+
+      fetchNotes();
+    }, [])
+  );
 
   useEffect(() => {
     fetchSearch();
