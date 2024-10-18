@@ -1,17 +1,14 @@
 import styled from 'styled-components/native';
-import Colors from '@/constants/Colors';
 import { Fonts } from '@/constants/Fonts';
 import { TouchableOpacity } from 'react-native';
 import { w, h } from '@/utils/responsiveMesures';
 import { StatusBar } from 'react-native';
 
 const statusBar = StatusBar.currentHeight;
-const { theme } = Colors;
-
 
 export const HeaderContainer = styled.View`
     height: ${h(7.5)}px;
-    background-color: ${theme.borderLeft};
+    background-color: ${(props) => props.theme.colors.borderLeft};
     flex-direction: row;
     align-items: center;
     padding: 0 ${w(4)}px 0 ${w(4)}px;

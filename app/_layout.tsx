@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontProvider } from '../context/FontContext';
 import { Slot } from 'expo-router';
-
+import { ThemeProvider } from '@/context/ThemeContext';
 
 function InitialLayout() {
     return (
@@ -11,8 +11,10 @@ function InitialLayout() {
 
 export default function Root() {
     return (
-        <FontProvider>
-            <InitialLayout />
-        </FontProvider>
+        <ThemeProvider>
+            <FontProvider>
+                <InitialLayout />
+            </FontProvider>
+        </ThemeProvider>
     );
 }

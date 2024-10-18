@@ -10,6 +10,7 @@ const AddImage = require('@/assets/images/pencil.png');
 const SearchImage = require('@/assets/images/search.png');
 
 export default function Index() {
+
   const router = useRouter();
   const [searchText, setSearchText] = useState('');
   const [notes, setNotes] = useState<NotesType>({});

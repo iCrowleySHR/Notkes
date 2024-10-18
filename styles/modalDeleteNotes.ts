@@ -2,9 +2,6 @@ import styled from 'styled-components/native';
 import { Fonts } from '@/constants/Fonts';
 import { h, w } from '@/utils/responsiveMesures';
 import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
-import Colors from '@/constants/Colors';
-
-const { theme } = Colors;
 
 interface ModalButtonProps extends TouchableOpacityProps {
     bgColor?: string;
@@ -48,6 +45,6 @@ export const ModalButton = styled(TouchableOpacity) <ModalButtonProps>`
 export const TextOptions = styled.Text`
   font-family: ${Fonts.PoppinsRegular};
   font-size: ${w(4)}px;
-  color: ${theme.gray};
+  color: ${(props) => props.theme.colors.gray};
   margin: ${h(1)}px 0;
 `;
