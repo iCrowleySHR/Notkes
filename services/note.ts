@@ -29,7 +29,7 @@ export const createNote = async ({ title, content }: Omit<Note, 'id' | 'lastUpda
 export const getAllNotes = async (): Promise<NotesType> => {
   const keys = await AsyncStorage.getAllKeys();
   const result = await AsyncStorage.multiGet(keys);
-
+  
   const notesArray: Note[] = result.reduce<Note[]>((acc, [key, value]) => {
     if (key && value) {
       try {

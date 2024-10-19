@@ -5,6 +5,7 @@ import { searchNotes, getAllNotes, NotesType, deleteAll } from '@/services/note'
 import { useRouter } from 'expo-router';
 import { formatDate } from '@/utils/dateFormatter';
 import { useFocusEffect } from 'expo-router';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const AddImage = require('@/assets/images/pencil.png');
 const SearchImage = require('@/assets/images/search.png');
@@ -14,6 +15,14 @@ export default function Index() {
   const router = useRouter();
   const [searchText, setSearchText] = useState('');
   const [notes, setNotes] = useState<NotesType>({});
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  async function themeVerify() {
+    const savedTheme = await AsyncStorage.getItem('@theme');
+    if (savedTheme) {
+      setTheme(savedTheme as 'light' | 'dark');
+    }
+  }
 
   const fetchSearch = async () => {
     if (searchText.trim() === '') {
@@ -33,6 +42,7 @@ export default function Index() {
         setNotes(fetchedNotes);
       };
 
+      themeVerify();
       fetchNotes();
     }, [])
   );
@@ -50,7 +60,11 @@ export default function Index() {
           onChangeText={setSearchText}
           placeholder="Pesquisar nota..."
         />
-        <Icon source={SearchImage} resizeMode="contain" />
+        <Icon 
+          source={SearchImage} 
+          resizeMode="contain" 
+          style={{ tintColor: theme === 'light' ? 'black' : 'white' }} 
+        />
       </SectionSearch>
 
       <ScrollBody>

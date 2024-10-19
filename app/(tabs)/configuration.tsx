@@ -3,7 +3,7 @@ import { ScrollBody, Title, Section, Text as StyledText } from '@/styles/configu
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { w } from '@/utils/responsiveMesures';
 import ModalDeleteNotes from '@/components/modalDeleteNote';
-import { Switch } from 'react-native';
+import Entypo from '@expo/vector-icons/Entypo';
 import { ThemeContext } from '@/context/ThemeContext';
 
 export default function Configuration() {
@@ -13,7 +13,9 @@ export default function Configuration() {
         setModalVisible(!modalVisible);
     };
 
-    const { toggleTheme, theme } = useContext(ThemeContext)
+    const { toggleTheme, theme } = useContext(ThemeContext);
+
+    const iconColor = theme === 'light' ? 'black' : 'white'; 
 
     return (
         <ScrollBody>
@@ -23,6 +25,7 @@ export default function Configuration() {
                 <StyledText>Apagar todas as notas</StyledText>
             </Section>
             <Section onPress={toggleTheme}>
+                <Entypo name="light-up" size={w(7)} color={iconColor} /> 
                 <StyledText>Mudar tema</StyledText>
             </Section>
             <ModalDeleteNotes isVisible={modalVisible} onClose={toggleModal} />

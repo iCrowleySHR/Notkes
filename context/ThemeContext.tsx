@@ -41,6 +41,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
         const selectTheme = theme === 'light' ? 'dark' : 'light';
         setTheme(selectTheme as ThemeType);
         AsyncStorage.setItem('@theme', selectTheme);
+        return selectTheme;
     }
 
     return (
