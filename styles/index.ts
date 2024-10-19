@@ -23,7 +23,9 @@ export const SectionSearch = styled.View`
   position: relative; 
 `;
 
-export const InputSearch = styled.TextInput`
+export const InputSearch = styled.TextInput.attrs((props) => ({
+  placeholderTextColor: props.theme.colors.placeholderColor, 
+}))`
   padding: ${w(2)}px 40px ${w(2)}px 12px;
   border-radius: 13px;
   border-width: 0;

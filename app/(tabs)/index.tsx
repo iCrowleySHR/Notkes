@@ -1,6 +1,6 @@
 import { InputSearch, SectionSearch, ScrollBody, ScreenContainer, Icon, SectionNotes, Notes, BorderLeft, Title, Content, ColumnText, ButtonAdd, LabelAdd, DateText } from '@/styles/index';
 import React, { useState, useEffect } from 'react';
-import { Image, Pressable, View } from 'react-native';
+import { Image, Pressable } from 'react-native';
 import { searchNotes, getAllNotes, NotesType, deleteAll } from '@/services/note';
 import { useRouter } from 'expo-router';
 import { formatDate } from '@/utils/dateFormatter';
@@ -41,7 +41,7 @@ export default function Index() {
         const fetchedNotes = await getAllNotes();
         setNotes(fetchedNotes);
       };
-
+      
       themeVerify();
       fetchNotes();
     }, [])

@@ -28,7 +28,8 @@ export const createNote = async ({ title, content }: Omit<Note, 'id' | 'lastUpda
 */
 export const getAllNotes = async (): Promise<NotesType> => {
   const keys = await AsyncStorage.getAllKeys();
-  const result = await AsyncStorage.multiGet(keys);
+  const noteKeys = keys.filter(key => key !== '@theme');
+  const result = await AsyncStorage.multiGet(noteKeys);
   
   const notesArray: Note[] = result.reduce<Note[]>((acc, [key, value]) => {
     if (key && value) {
@@ -57,7 +58,8 @@ export const getAllNotes = async (): Promise<NotesType> => {
   Função que retorna notas pelo o título.
 */
 export const searchNotes = async (searchTerm: string): Promise<NotesType> => {
-  const keys = await AsyncStorage.getAllKeys();
+  const allAsync = await AsyncStorage.getAllKeys();
+  const keys = allAsync.filter(key => key !== '@theme');
   const result = await AsyncStorage.multiGet(keys);
 
   const filteredNotes = result.reduce<NotesType>((acc, [key, value]) => {
