@@ -1,15 +1,14 @@
 {
   "expo": {
-    "name": "appNotepad",
+    "name": "Notkes - Bloco de notas",
     "slug": "appNotepad",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/logo.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
+
       "backgroundColor": "#ffffff"
     },
     "ios": {
@@ -17,20 +16,27 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/logo.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.icrowleyshr.dartres.appNotepad"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/logo.png"
     },
     "plugins": [
       "expo-router"
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2eee68c0-edf5-4adf-ae9a-4a011a1a15ce"
+      }
+    },
+    "owner": "icrowleyshr"
   }
 }

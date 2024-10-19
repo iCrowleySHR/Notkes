@@ -10,7 +10,9 @@ export const ScreenContainer = styled.View`
     background-color: ${(props) => props.theme.colors.noteBackground};
 `;
 
-export const InputTitle = styled.TextInput`
+export const InputTitle = styled.TextInput.attrs((props) => ({
+  placeholderTextColor: props.theme.colors.placeholderColor, 
+}))`
   padding: ${w(2)}px;
   font-family: ${Fonts.PoppinsRegularBold};
   color: ${(props) => props.theme.colors.gray};
@@ -20,7 +22,9 @@ export const InputTitle = styled.TextInput`
   margin-top: ${w(6)}px;
 `;
 
-export const InputContent = styled.TextInput`
+export const InputContent = styled.TextInput.attrs((props) => ({
+  placeholderTextColor: props.theme.colors.placeholderColor, 
+}))`
   border: none;
   background-color: ${(props) => props.theme.colors.noteBackground};
   font-family: ${Fonts.PoppinsRegular};
