@@ -26,7 +26,7 @@ export const SectionSearch = styled.View`
 export const InputSearch = styled.TextInput.attrs((props) => ({
   placeholderTextColor: props.theme.colors.placeholderColor, 
 }))`
-  padding: ${w(2)}px 40px ${w(2)}px 12px;
+  padding: ${w(5)}px 40px ${w(5)}px 12px;
   border-radius: 13px;
   border-width: 0;
   background-color: ${(props) => props.theme.colors.noteBackground};
@@ -97,8 +97,8 @@ export const DateText = styled.Text`
   font-family: ${Fonts.PoppinsRegular};
   font-size: ${w(2.5)}px;
   position: absolute;
-  bottom: 2px; 
-  right: 2px;
+  bottom: 0; 
+  right: 1px;
   color: ${(props) => props.theme.colors.gray} ;
 `;
 
