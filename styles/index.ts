@@ -26,7 +26,7 @@ export const SectionSearch = styled.View`
 export const InputSearch = styled.TextInput.attrs((props) => ({
   placeholderTextColor: props.theme.colors.placeholderColor,
 }))`
-  padding: ${w(5)}px 40px ${w(5)}px 12px;
+  padding: ${w(1)}px ${w(10)}px ${w(1)}px ${w(3)}px;
   border-radius: 13px;
   border-width: 0;
   background-color: ${(props) => props.theme.colors.noteBackground};
