@@ -70,6 +70,7 @@ export default function Note() {
         value={note.title}
         onChangeText={handleTitleChange}
         placeholder="Insira o título da nota..."
+        selection={{ start: 0, end: 0 }}
       />
       <InputContent
         value={note.content}
@@ -77,6 +78,7 @@ export default function Note() {
         placeholder="Digite aqui o conteúdo..."
         scrollEnabled={false}
         style={{ height: Math.max(35, inputHeight) }}
+        selection={{ start: 0, end: 0 }}
         onContentSizeChange={(e) => setInputHeight(e.nativeEvent.contentSize.height)}
         multiline
       />

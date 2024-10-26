@@ -24,7 +24,7 @@ export const SectionSearch = styled.View`
 `;
 
 export const InputSearch = styled.TextInput.attrs((props) => ({
-  placeholderTextColor: props.theme.colors.placeholderColor, 
+  placeholderTextColor: props.theme.colors.placeholderColor,
 }))`
   padding: ${w(5)}px 40px ${w(5)}px 12px;
   border-radius: 13px;
@@ -73,24 +73,24 @@ export const ColumnText = styled.View`
   position: relative;
 `;
 
-export const Title = styled.Text`
+export const Title = styled.Text.attrs(() => ({
+  numberOfLines: 1,
+  ellipsizeMode: 'tail'
+}))`
   font-size: ${w(4)}px;
   max-width: 95%;
   color: ${(props) => props.theme.colors.gray};
-  white-space: nowrap;
   font-family: ${Fonts.PoppinsRegularBold};
-  text-overflow: ellipsis;
-  overflow: hidden;
 `;
 
-export const Content = styled.Text`
+export const Content = styled.Text.attrs(() => ({
+  numberOfLines: 1,
+  ellipsizeMode: 'tail'
+}))`
   font-family: ${Fonts.PoppinsRegular};
   font-size: ${w(3)}px;
   color: ${(props) => props.theme.colors.gray} ;
   max-width: 95%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 `;
 
 export const DateText = styled.Text`
