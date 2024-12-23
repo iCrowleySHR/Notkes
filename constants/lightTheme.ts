@@ -7,6 +7,7 @@ export const lightTheme: DefaultTheme = {
     noteBackground: '#ffff',
     borderLeft: '#a6c7ee',
     gray: '#808080',
-    placeholderColor : '#212121'
+    placeholderColor : '#808080',
+    textColor: '#212121'
   }
 }

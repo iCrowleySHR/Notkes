@@ -7,6 +7,7 @@ export const darkTheme: DefaultTheme = {
         noteBackground: '#2f2f2f',
         borderLeft: '#5b5b59',
         gray: '#d3d3d3',
-        placeholderColor : '#ffff'
+        placeholderColor : '#ffff',
+        textColor: '#ffff'
     }
 };

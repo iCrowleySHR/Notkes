@@ -15,7 +15,7 @@ export const InputTitle = styled.TextInput.attrs((props) => ({
 }))`
   padding: ${w(2)}px;
   font-family: ${Fonts.PoppinsRegularBold};
-  color: ${(props) => props.theme.colors.gray};
+  color: ${(props) => props.theme.colors.textColor};
   width: 100%;
   height: ${h(7)}px; 
   font-size: ${w(6)}px;

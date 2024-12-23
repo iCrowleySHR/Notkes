@@ -14,7 +14,6 @@ export default function Note() {
   const [noteId, setNoteId] = useState(initialNoteId);
   const [note, setNote] = useState({ title: '', content: '' });
   const [inputHeight, setInputHeight] = useState(0);
-  const { colors } = useTheme();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,7 +69,7 @@ export default function Note() {
         value={note.title}
         onChangeText={handleTitleChange}
         placeholder="Insira o título da nota..."
-        selection={{ start: 0, end: 0 }}
+        maxLength={25}
       />
       <InputContent
         value={note.content}
@@ -78,7 +77,6 @@ export default function Note() {
         placeholder="Digite aqui o conteúdo..."
         scrollEnabled={false}
         style={{ height: Math.max(35, inputHeight) }}
-        selection={{ start: 0, end: 0 }}
         onContentSizeChange={(e) => setInputHeight(e.nativeEvent.contentSize.height)}
         multiline
       />
