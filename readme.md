@@ -28,7 +28,7 @@ Confira algumas capturas de tela do projeto:
 
 Você pode baixar o projeto clicando no link abaixo:
 
-- [Baixar Notkes](#) *(Adicione o link do arquivo aqui, caso esteja hospedado em algum serviço como Google Drive ou GitHub releases)*
+- [Baixar Notkes](#) (https://drive.google.com/file/d/1fnh8PKXa-KgCxZ83_mWhKZIIv_snFDVO/view?usp=sharing)
 
 Este projeto foi desenvolvido por:
 
