@@ -1,6 +1,2 @@
-<img src="assets/images/IMG-20241212-WA0006.jpg" alt="">
-<img src="assets/images/IMG-20241212-WA0007.jpg" alt="">
-<img src="assets/images/IMG-20241212-WA0008.jpg" alt="">
-<img src="assets/images/IMG-20241212-WA0009.jpg" alt="">
-<img src="assets/images/IMG-20241212-WA0016.jpg" alt="">
-<img src="assets/images/IMG-20241212-WA0017.jpg" alt="">
+# Notkes
+Notkes é um projeto desenvolvido para gerenciar notas de forma simples e eficiente. Ele permite que os usuários criem, editem e excluam notas, organizando-as de maneira intuitiva. Este repositório contém o código-fonte.
